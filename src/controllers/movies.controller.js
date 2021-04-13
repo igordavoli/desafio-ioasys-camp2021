@@ -1,11 +1,11 @@
 const { StatusCodes } = require("http-status-codes");
-const { usersService } = require("../services");
+const { moviesService } = require("../services");
 
 module.exports = {
   list: async (req, res) => {
     try {
-      const { name } = req.query;
-      const response = await usersService.list({ name });
+      const { title } = req.query;
+      const response = await moviesService.list({ title });
 
       if (!response || response.data.length === 0) {
         return res.status(StatusCodes.NO_CONTENT).end();
@@ -19,15 +19,4 @@ module.exports = {
         .json(error.messages);
     }
   },
-
-  store: async (req, res) => {
-    const { email, name, password } = req.body;
-
-    const storedUser = await usersService.store({ email, name, password })
-
-    res.status(StatusCodes.OK).json(storedUser)
-  }
-
-
-
 };

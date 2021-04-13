@@ -31,6 +31,13 @@ module.exports = async (req, res, next) => {
     const decoded = await verify(token, constants.jwtToken);
     const user = await usersRepository.getById(decoded.id);
 
+    if (!user.isAdmin) {
+      throw {
+        status: StatusCodes.UNAUTHORIZED,
+        message: messages.unauthorized
+      }
+    }
+
     if (!user) {
       throw {
         status: StatusCodes.NOT_FOUND,

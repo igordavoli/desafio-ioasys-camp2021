@@ -1,11 +1,9 @@
-const { encryptor } = require("../helpers");
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
+  const Movie = sequelize.define(
     "Movie",
     {
       title: DataTypes.STRING,
-      director: DataTypes.STRING,
       gender: DataTypes.STRING,
       synopsis: DataTypes.STRING,
       totalVotes: {
@@ -45,5 +43,5 @@ module.exports = (sequelize, DataTypes) => {
   //   );
   // };
 
-  return User;
+  return Movie;
 };
