@@ -9,7 +9,8 @@ module.exports.list = async (options) => {
   }
 
   const { count, rows } = await moviesRepository.list(query);
-
+  console.log(count)
+  console.log(rows)
   return {
     metadata: {
       total: count,

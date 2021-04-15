@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable(
-      "movies",
+      "movie_actors",
       {
         id: {
           allowNull: false,
@@ -11,24 +11,19 @@ module.exports = {
           primaryKey: true,
           type: Sequelize.INTEGER,
         },
-        user_id: {
+        movie_id: {
           allowNull: false,
           type: Sequelize.INTEGER,
-          references: { model: "users", key: "id" },
+          references: { model: "movies", key: "id" },
           onUpdate: "CASCADE",
-          onDelete: "SET NULL",
+          onDelete: "CASCADE",
         },
-        title: {
+        actor_id: {
           allowNull: false,
-          type: Sequelize.STRING,
-        },
-        gender: {
-          allowNull: false,
-          type: Sequelize.STRING,
-        },
-        synopsis: {
-          allowNull: false,
-          type: Sequelize.STRING,
+          type: Sequelize.INTEGER,
+          references: { model: "actors", key: "id" },
+          onUpdate: "CASCADE",
+          onDelete: "CASCADE",
         },
         created_at: {
           allowNull: false,
@@ -38,17 +33,11 @@ module.exports = {
           allowNull: false,
           type: Sequelize.DATE,
         },
-        is_deleted: {
-          allowNull: false,
-          type: Sequelize.BOOLEAN,
-          defaultValue: false,
-
-        },
       }
     )
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("movies");
+    queryInterface.dropTable("movie_actors")
   }
 };

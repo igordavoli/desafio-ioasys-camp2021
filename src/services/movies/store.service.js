@@ -1,4 +1,4 @@
-const { moviesRepository } = require("../../repositories");
+const { moviesRepository, actorsRepository } = require("../../repositories");
 const { messages } = require("../../helpers");
 const { StatusCodes } = require("http-status-codes");
 
@@ -13,16 +13,18 @@ module.exports.store = async (options) => {
     }
   }
 
+  const [actors] = await actorsRepository.findOrCreate(options.actors)
+
   const newMovie = {
     title: options.title,
-    //directors: options.director,
     gender: options.gender,
     synopsis: options.synopsis,
-    // actors: options.actors,
     userId: options.userId
   };
 
   const storedMovie = await moviesRepository.create(newMovie);
+
+  await storedMovie.addActor(actors);
 
   return storedMovie;
 
