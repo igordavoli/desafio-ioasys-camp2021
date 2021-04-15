@@ -1,3 +1,4 @@
+const { static } = require("express");
 
 module.exports = (sequelize, DataTypes) => {
   const Movie = sequelize.define(
@@ -6,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       gender: DataTypes.STRING,
       synopsis: DataTypes.STRING,
+      userId: {
+        type: DataTypes.INTEGER,
+        field: "user_id",
+      },
       totalVotes: {
         type: DataTypes.INTEGER,
         field: "total_votes"
@@ -22,26 +27,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         field: "updated_at",
       },
+
     },
-    {
-      tableName: "movies",
-    }
+    { tableName: "movies", }
   );
 
-  // User.beforeSave(async (user, options) => {
-  //   const password = await encryptor.hashPassword(user.password);
-  //   if (user.changed("password")) {
-  //     Object.assign(user, { password });
-  //   }
-  //   return user;
-  // });
-
-  // User.prototype.toJSON = function () {
-  //   const user = { ...this.get() };
-  //   return Object.fromEntries(
-  //     Object.entries(user).filter(([key]) => !["password"].includes(key))
-  //   );
-  // };
-
+  Movie.associate = function (models) {
+    Movie.belongsTo(models.User, { foreignKey: 'userId', as: 'user' })
+  }
   return Movie;
 };

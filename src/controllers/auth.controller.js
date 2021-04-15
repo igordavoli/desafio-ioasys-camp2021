@@ -31,7 +31,6 @@ module.exports = {
   },
 
   signup: async (req, res) => {
-
     try {
       const schema = yup.object().shape({
         email: yup.string().required().email(),
@@ -47,9 +46,11 @@ module.exports = {
 
       const storedUser = await usersService.store({ email, name, password })
 
-      res.status(StatusCodes.OK).json(storedUser)
+      res.status(StatusCodes.CREATED).json({ storedUser })
+
     } catch (error) {
       console.error(error);
+
       return res
         .status(
           error.name == "ValidationError"
@@ -58,8 +59,5 @@ module.exports = {
         )
         .json(error.message);
     }
-
   }
-
-
 };

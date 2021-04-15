@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "users",
     }
   );
+  User.associate = function (models) {
+    User.hasMany(models.Movie, { foreignKey: 'userId', as: 'movies' })
+  };
 
   User.beforeSave(async (user, options) => {
     const password = await encryptor.hashPassword(user.password);

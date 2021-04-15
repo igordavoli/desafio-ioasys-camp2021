@@ -19,15 +19,4 @@ module.exports = {
         .json(error.messages);
     }
   },
-
-  store: async (req, res) => {
-    const { email, name, password } = req.body;
-
-    const storedUser = await usersService.store({ email, name, password })
-
-    res.status(StatusCodes.OK).json(storedUser)
-  }
-
-
-
 };

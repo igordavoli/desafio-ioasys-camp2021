@@ -12,6 +12,7 @@ module.exports = {
       }
 
       return res.status(StatusCodes.OK).json(response);
+
     } catch (error) {
       console.log(error);
       return res
@@ -19,4 +20,22 @@ module.exports = {
         .json(error.messages);
     }
   },
+  store: async (req, res) => {
+    try {
+      const { movie } = req.body;
+      const { id } = req.user
+
+      movie.userId = id;
+
+      const storedMovie = await moviesService.store(movie);
+
+      res.status(StatusCodes.CREATED).json({ storedMovie })
+
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(error.status || StatusCodes.INTERNAL_SERVER_ERROR)
+        .json(error.messages);
+    }
+  }
 };

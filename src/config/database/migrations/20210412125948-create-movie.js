@@ -1,15 +1,22 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable(
-      'movies',
+      "movies",
       {
         id: {
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
           type: Sequelize.INTEGER,
+        },
+        user_id: {
+          allowNull: false,
+          type: Sequelize.INTEGER,
+          references: { model: "users", key: 'id' },
+          onUpdate: 'CASCADE',
+          onDelete: 'SET NULL',
         },
         title: {
           allowNull: false,
