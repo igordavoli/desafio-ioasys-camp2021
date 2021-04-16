@@ -1,17 +1,20 @@
 const { Movie } = require("../models");
-const { Actor } = require("../models");
 
 module.exports = {
   list: (query) => Movie.findAndCountAll(
     // query,
     {
-      include: {
+      include: [{
         association: 'actors',
         attributes: ['name'],
-        through: {
-          attributes: []
-        }
+        through: { attributes: [] }
+      },
+      {
+        association: 'directors',
+        attributes: ['name'],
+        through: { attributes: [] }
       }
+      ],
     }
   ),
   getById: (id) => Movie.findByPk(id),
@@ -20,4 +23,5 @@ module.exports = {
   update: (movie) => movie.save(),
   destroy: (id) => Movie.destroy({ where: { id } }),
   addActors: (actor) => Movie.addActors(actor),
+  addDirector: (director) => Movie.addDirectors(director),
 };

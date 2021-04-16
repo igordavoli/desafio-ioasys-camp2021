@@ -28,8 +28,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Movie.associate = function (models) {
     Movie.belongsTo(models.User, { foreignKey: "userId", as: "user" });
-    //Movie.hasOne(models.Director, { foreignKey: "directorId", as: "director" })
     Movie.belongsToMany(models.Actor, { foreignKey: { name: "movie_id" }, through: "movie_actors", as: "actors" });
+    Movie.belongsToMany(models.Director, { foreignKey: { name: "movie_id" }, through: "movie_directors", as: "directors" });
   }
   return Movie;
 };

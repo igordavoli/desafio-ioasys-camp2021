@@ -1,4 +1,4 @@
-const { moviesRepository, actorsRepository } = require("../../repositories");
+const { moviesRepository, directorsRepository, actorsRepository } = require("../../repositories");
 const { messages } = require("../../helpers");
 const { StatusCodes } = require("http-status-codes");
 
@@ -9,11 +9,9 @@ module.exports.store = async (options) => {
   if (hasMovie) {
     throw {
       status: StatusCodes.CONFLICT,
-      messages: messages.alreadyExists('movie')
+      messages: messages.alreadyExists('movie'),
     }
   }
-
-  const [actors] = await actorsRepository.findOrCreate(options.actors)
 
   const newMovie = {
     title: options.title,
@@ -24,7 +22,15 @@ module.exports.store = async (options) => {
 
   const storedMovie = await moviesRepository.create(newMovie);
 
-  await storedMovie.addActor(actors);
+  options.directors.forEach((async directors => {
+    const [storedDirector] = await directorsRepository.findOrCreate(directors);
+    await storedMovie.addDirector(storedDirector);
+  }))
+
+  options.actors.forEach(async actors => {
+    const [storedActors] = await actorsRepository.findOrCreate(actors);
+    await storedMovie.addActor(storedActors);
+  })
 
   return storedMovie;
 
