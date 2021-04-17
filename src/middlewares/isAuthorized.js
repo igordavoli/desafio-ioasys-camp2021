@@ -38,13 +38,6 @@ module.exports = async (req, res, next) => {
       };
     }
 
-    if (!user.isAdmin) {
-      throw {
-        status: StatusCodes.UNAUTHORIZED,
-        message: messages.unauthorized
-      }
-    }
-
     req.session = { token, id: decoded.id, email: decoded.email };
     req.user = user;
 

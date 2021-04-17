@@ -16,7 +16,9 @@ module.exports = {
 
       const { email, password } = req.body;
       const response = await authService.signin(email, password);
+
       return res.status(StatusCodes.OK).json(response);
+
     } catch (error) {
       console.error(error);
       return res
@@ -39,13 +41,14 @@ module.exports = {
 
       await schema.validate(req.body, {
         stripUnknown: true,
+        abortEarly: false
       });
 
       const { email, name, password } = req.body;
 
-      const storedUser = await usersService.store({ email, name, password })
+      const { storedUser, token } = await authService.signup(email, name, password);
 
-      res.status(StatusCodes.CREATED).json({ storedUser })
+      res.status(StatusCodes.CREATED).json({ storedUser, token });
 
     } catch (error) {
       console.error(error);

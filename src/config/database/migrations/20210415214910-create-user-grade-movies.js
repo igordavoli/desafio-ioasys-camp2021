@@ -3,13 +3,27 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable(
-      "grades",
+      "users_grades_movies",
       {
         id: {
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
           type: Sequelize.INTEGER,
+        },
+        user_id: {
+          allowNull: false,
+          type: Sequelize.INTEGER,
+          references: { model: "users", key: "id" },
+          onUpdate: "CASCADE",
+          onDelete: "SET NULL",
+        },
+        movie_id: {
+          allowNull: false,
+          type: Sequelize.INTEGER,
+          references: { model: "movies", key: "id" },
+          onUpdate: "CASCADE",
+          onDelete: "CASCADE",
         },
         grade: {
           allowNull: false,
@@ -24,6 +38,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    queryInterface.dropTable("grades")
+    queryInterface.dropTable("users_grades_movies")
   }
 };
