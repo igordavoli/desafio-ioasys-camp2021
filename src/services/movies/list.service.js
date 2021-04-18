@@ -1,12 +1,10 @@
 const { moviesRepository } = require("../../repositories");
 
 module.exports.list = async (options) => {
-  console.log(options);
   const query = {};
 
   if (options.title && options.title !== "") {
     query.where = { title: options.title }
-
   }
 
   query.include = [
@@ -19,15 +17,38 @@ module.exports.list = async (options) => {
       association: 'directors',
       attributes: ['name'],
       through: { attributes: [] }
+    },
+    {
+      association: 'user',
+      attributes: ['name'],
+    },
+    {
+      association: 'grades',
+      attributes: ['grade'],
     }
   ]
 
   const { count, rows } = await moviesRepository.list(query);
 
+  const _rows = rows.map(movie => {
+    const totalAvaiations = movie.grades.length;
+
+    if (!totalAvaiations) {
+      movie.averegeGrade = null
+      return movie;
+    }
+
+    const gradesSum = movie.grades.reduce((sum, grade) => sum + grade.grade, 0);
+
+    movie.averegeGrade = gradesSum / totalAvaiations;
+
+    return movie;
+  });
+
   return {
     metadata: {
       total: count,
     },
-    data: rows,
+    data: _rows[0].averegeGrade,
   };
 };

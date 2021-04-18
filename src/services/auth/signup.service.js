@@ -6,12 +6,21 @@ const { usersRepository } = require("../../repositories");
 const { promisify } = require("util");
 
 module.exports.signup = async (email, name, password) => {
-  const hasUser = await usersRepository.get({ email });
+  const hasUserEmail = await usersRepository.get({ email });
 
-  if (hasUser) {
+  if (hasUserEmail) {
     throw {
       status: StatusCodes.CONFLICT,
       message: messages.alreadyExists('email'),
+    };
+  }
+
+  const hasUserName = await usersRepository.get({ name });
+
+  if (hasUserName) {
+    throw {
+      status: StatusCodes.CONFLICT,
+      message: messages.alreadyExists('name'),
     };
   }
 

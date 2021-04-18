@@ -1,5 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
-const { authService, usersService } = require("../services");
+const { authService } = require("../services");
 const yup = require("yup");
 
 module.exports = {
@@ -12,6 +12,7 @@ module.exports = {
 
       await schema.validate(req.body, {
         stripUnknown: true,
+        abortEarly: false,
       });
 
       const { email, password } = req.body;

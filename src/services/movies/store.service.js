@@ -9,7 +9,7 @@ module.exports.store = async (options) => {
   if (hasMovie) {
     throw {
       status: StatusCodes.CONFLICT,
-      messages: messages.alreadyExists('movie'),
+      message: messages.alreadyExists('movie'),
     }
   }
 
@@ -22,14 +22,14 @@ module.exports.store = async (options) => {
 
   const storedMovie = await moviesRepository.create(newMovie);
 
-  options.directors.forEach((async directors => {
-    const [storedDirector] = await directorsRepository.findOrCreate(directors);
+  options.directors.forEach((async director => {
+    const [storedDirector] = await directorsRepository.findOrCreate(director);
     await storedMovie.addDirector(storedDirector);
   }))
 
-  options.actors.forEach(async actors => {
-    const [storedActors] = await actorsRepository.findOrCreate(actors);
-    await storedMovie.addActor(storedActors);
+  options.actors.forEach(async actor => {
+    const [storedActor] = await actorsRepository.findOrCreate(actor);
+    await storedMovie.addActor(storedActor);
   })
 
   return storedMovie;
