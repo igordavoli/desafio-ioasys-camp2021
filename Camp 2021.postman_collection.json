@@ -1,0 +1,570 @@
+{
+	"info": {
+		"_postman_id": "82067d2b-9cb1-4208-b6fa-f39ebd4b48e3",
+		"name": "Camp 2021",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@ioasys.com\",\n    \"password\": \"12341234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/v1/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@ioasys.com\",\n    \"password\":\"abc123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/v1/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test@ioasys.com\",\n  \"name\":\"ioasys\",\n  \"password\":\"abc123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/v1/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ0ZXN0QGlvYXN5cy5jb20iLCJpYXQiOjE2MTg4NDUxOTd9.89Z1pVfmaxl5RAGyrmGWUMsG-xBxQ_cOY8Phf90XbfA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"user\": {\n  \"email\": \"test@ioasys.com\",\n  \"name\":\"ioasysEdited\",\n  \"password\":\"abc123\",\n  \"isDeleted\": true,\n  \"newPassword\": \"\"\n}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/v1/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro admin",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBpb2FzeXMuY29tIiwiaWF0IjoxNjE4ODQ1MDUwfQ.Iba4H8JKwGEfhR2rZQoXqUW9AYoYemFZsrmLi6D5vOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"isAdmin\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/v1/users/2/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"2",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listagem Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBpb2FzeXMuY29tIiwiaWF0IjoxNjE4ODQ1MDUwfQ.Iba4H8JKwGEfhR2rZQoXqUW9AYoYemFZsrmLi6D5vOA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Administrador",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detalhes da conta",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJkYXZvbGlAZ21haWwuY29tIiwiaWF0IjoxNjE4NjA5NTU0fQ.G__0qBdVA5P_Ax2w1JvUIeOTpjfPflJlUEz1B-kWI_0"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/api/v1/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"2"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "teste",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Filmes",
+			"item": [
+				{
+					"name": "Add ",
+					"item": [
+						{
+							"name": "Add movie 0",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBpb2FzeXMuY29tIiwiaWF0IjoxNjE4ODQ1MDUwfQ.Iba4H8JKwGEfhR2rZQoXqUW9AYoYemFZsrmLi6D5vOA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"movie\": {\n\t\"title\": \"Tenet\",\n\t\"gender\": \"Scyfy\",\n\t\"synopsis\": \"A secret agent is given a single word as his weapon and sent to prevent the onset of World War III. He must travel through time and bend the laws of nature in order to be successful in his mission.\",\n\t\"actors\": [\n\t\t\"John David Washington\", \n\t\t\"Kenneth Branagh\",\n\t\t\"Robert Pattinson\"\n\t],\n\t\"directors\": [\"Christopher Nolan\"]\n}\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/v1/movies/addMovie",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"v1",
+										"movies",
+										"addMovie"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add movie 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBpb2FzeXMuY29tIiwiaWF0IjoxNjE4ODQ1MDUwfQ.Iba4H8JKwGEfhR2rZQoXqUW9AYoYemFZsrmLi6D5vOA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"movie\": {\n\t\"title\": \"The Avengers\",\n\t\"gender\": \"Action\",\n\t\"synopsis\": \"Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.\",\n\t\"actors\": [\n\t\t\"Robert Downey Jr.\", \n\t\t\"Chris Evans\",\n\t\t\"Scarlett Johansson\"\n\t],\n\t\"directors\": [\"Joss Whedon\"]\n}\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/v1/movies/addMovie",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"v1",
+										"movies",
+										"addMovie"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add movie 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBpb2FzeXMuY29tIiwiaWF0IjoxNjE4ODQ1MDUwfQ.Iba4H8JKwGEfhR2rZQoXqUW9AYoYemFZsrmLi6D5vOA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"movie\": {\n\t\"title\": \"Sherlock Holmes\",\n\t\"gender\": \"Mystery\",\n\t\"synopsis\": \"Detective Sherlock Holmes and his stalwart partner Watson engage in a battle of wits and brawn with a nemesis whose plot is a threat to all of England.\",\n\t\"actors\": [\n\t\"Robert Downey Jr.\", \n\t\"Jude Law\", \n\t\"Rachel McAdams\"\n\t],\n\t\"directors\": [\"Guy Ritchie\"]\n}\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/v1/movies/addMovie",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"v1",
+										"movies",
+										"addMovie"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add movie 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBpb2FzeXMuY29tIiwiaWF0IjoxNjE4ODQ1MDUwfQ.Iba4H8JKwGEfhR2rZQoXqUW9AYoYemFZsrmLi6D5vOA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"movie\": {\n\t\"title\": \"Once Upon A Time...In Hollywood\",\n\t\"gender\": \"Comedy\",\n\t\"synopsis\": \"A faded television actor and his stunt double strive to achieve fame and success in the final years of Hollywood's Golden Age in 1969 Los Angeles.\",\n\t\"actors\": [\n\t\t\"Leonardo DiCaprio\",\n\t\t\"Brad Pitt\",\n\t\t\"Margot Robbie\"\n\t],\n\t\"directors\": [\"Quentin Tarantino\"]\n}\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/v1/movies/addMovie",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"v1",
+										"movies",
+										"addMovie"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add movie 4",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBpb2FzeXMuY29tIiwiaWF0IjoxNjE4ODQ1MDUwfQ.Iba4H8JKwGEfhR2rZQoXqUW9AYoYemFZsrmLi6D5vOA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"movie\": {\n\t\"title\": \"Django Unchained\",\n\t\"gender\": \"Drama\",\n\t\"synopsis\": \"With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation-owner in Mississippi.\",\n\t\"actors\": [\n\t\t\"Jamie Foxx\", \n\t\t\"Christoph Waltz\",\n\t\t\"Leonardo DiCaprio\"\n\t],\n\t\"directors\": [\"Quentin Tarantino\"]\n}\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/v1/movies/addMovie",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"v1",
+										"movies",
+										"addMovie"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Detalhes do filme",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/v1/movies/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Avaliar filme",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ0ZXN0QGlvYXN5cy5jb20iLCJpYXQiOjE2MTg4NDY5ODh9.XSjR8WYE60er-U4yr8y6gHhXyeOiWlC8jCCbSgA5mvo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"grade\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/v1/movies/2/avaliate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"2",
+								"avaliate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ0ZXN0QGlvYXN5cy5jb20iLCJpYXQiOjE2MTg4NDY5ODh9.XSjR8WYE60er-U4yr8y6gHhXyeOiWlC8jCCbSgA5mvo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"grade\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/v1/movies?title=&gender&director&actor=Robert Downey Jr.",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"v1",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": ""
+								},
+								{
+									"key": "gender",
+									"value": null
+								},
+								{
+									"key": "director",
+									"value": null
+								},
+								{
+									"key": "actor",
+									"value": "Robert Downey Jr."
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
