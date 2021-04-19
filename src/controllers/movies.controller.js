@@ -5,8 +5,8 @@ const yup = require("yup");
 module.exports = {
   list: async (req, res) => {
     try {
-      const { title } = req.query;
-      const response = await moviesService.list({ title });
+      const { title, gender, director, actor } = req.query;
+      const response = await moviesService.list({ title, gender, director, actor });
 
       if (!response || response.data.length === 0) {
         return res.status(StatusCodes.NO_CONTENT).end();
@@ -21,6 +21,16 @@ module.exports = {
         .json(error.message);
     }
   },
+
+  getDetails: async (req, res) => {
+    const { movieId } = req.params;
+
+    const movieDetails = await moviesService.getById(Number(movieId));
+
+    res.status(StatusCodes.OK).json(movieDetails);
+
+  },
+
 
   store: async (req, res) => {
     try {

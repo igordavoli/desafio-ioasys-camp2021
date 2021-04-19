@@ -5,7 +5,10 @@ module.exports.list = async (options) => {
   const query = {};
 
   if (options.name && options.name !== "") {
-    query.where = { name: options.name };
+    query.where = {
+      name: options.name,
+      isDeleted: false
+    };
   }
 
   const { count, rows } = await usersRepository.list(query);

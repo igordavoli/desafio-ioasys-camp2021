@@ -2,53 +2,42 @@ const { moviesRepository } = require("../../repositories");
 
 module.exports.list = async (options) => {
   const query = {};
+  query.where = [];
+  query.include = [];
+  console.log(options.director)
 
+  console.log(options.gender)
   if (options.title && options.title !== "") {
-    query.where = { title: options.title }
+    query.where.push({ title: options.title });
   }
 
-  query.include = [
-    {
-      association: 'actors',
-      attributes: ['name'],
-      through: { attributes: [] }
-    },
-    {
+  if (options.gender && options.gender !== "") {
+    query.where.push({ gender: options.gender });
+  }
+
+  if (options.director && options.director !== "") {
+    query.include.push({
       association: 'directors',
-      attributes: ['name'],
-      through: { attributes: [] }
-    },
-    {
-      association: 'user',
-      attributes: ['name'],
-    },
-    {
-      association: 'grades',
-      attributes: ['grade'],
+      where: { name: options.director }
     }
-  ]
+    )
+  }
+
+  if (options.actor && options.actor !== "") {
+    query.include.push({
+      association: 'actors',
+      where: { name: options.actor }
+    })
+  }
+
+  query.attributes = ['title', 'synopsis', 'gender']
 
   const { count, rows } = await moviesRepository.list(query);
-
-  const _rows = rows.map(movie => {
-    const totalAvaiations = movie.grades.length;
-
-    if (!totalAvaiations) {
-      movie.averegeGrade = null
-      return movie;
-    }
-
-    const gradesSum = movie.grades.reduce((sum, grade) => sum + grade.grade, 0);
-
-    movie.averegeGrade = gradesSum / totalAvaiations;
-
-    return movie;
-  });
 
   return {
     metadata: {
       total: count,
     },
-    data: _rows[0].averegeGrade,
+    data: rows,
   };
 };

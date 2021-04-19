@@ -24,9 +24,6 @@ module.exports.update = async (user) => {
     };
   }
 
-
-  console.log(user.isDeleted)
-
   let resp = {};
 
   if (user.newPassword) {

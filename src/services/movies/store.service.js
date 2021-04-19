@@ -3,8 +3,11 @@ const { messages } = require("../../helpers");
 const { StatusCodes } = require("http-status-codes");
 
 module.exports.store = async (options) => {
+  console.log(options.title)
 
-  const hasMovie = await moviesRepository.get({ title: options.title })
+  const hasMovie = await moviesRepository.get({
+    where: { title: options.title }
+  });
 
   if (hasMovie) {
     throw {
