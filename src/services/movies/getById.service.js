@@ -29,16 +29,22 @@ module.exports.getById = async (id) => {
     }
   ]
 
-  const movieDetails = await moviesRepository.get(query);
+  const movie = await moviesRepository.get(query);
 
-  const gradesSum = movieDetails.grades.reduce((sum, grade) => sum + grade.grade, 0);
+  const gradesSum = movie.grades.reduce((sum, grade) => sum + grade.grade, 0);
 
-  averegeGrade = gradesSum / movieDetails.grades.length
+  averegeGrade = gradesSum / movie.grades.length
 
   console.log(averegeGrade)
 
-  return {
-    movieDetails,
+  const movieDetails = {
+    title: movie.title,
+    gender: movie.gender,
+    synopsis: movie.synopsis,
+    directors: movie.directors,
+    actors: movie.actors,
     averegeGrade,
   }
+
+  return movieDetails;
 };
