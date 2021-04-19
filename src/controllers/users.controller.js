@@ -48,6 +48,7 @@ module.exports = {
       const { user } = req.body;
 
       const paramsUserId = Number(req.params.id);
+
       const tokenUserId = req.user.id;
       const isEqual = paramsUserId === tokenUserId;
 
@@ -58,7 +59,7 @@ module.exports = {
         };
       }
 
-      user.id = paramsId;
+      user.id = paramsUserId;
 
       const schema = yup.object().shape({
         id: yup.number().required(),

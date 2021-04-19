@@ -19,8 +19,7 @@ module.exports.list = async (options) => {
     query.include.push({
       association: 'directors',
       where: { name: options.director }
-    }
-    )
+    })
   }
 
   if (options.actor && options.actor !== "") {

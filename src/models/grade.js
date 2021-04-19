@@ -6,14 +6,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
-      userId: {
-        type: DataTypes.INTEGER,
-        field: "user_id",
-      },
-      movieId: {
-        type: DataTypes.INTEGER,
-        field: "movie_id",
-      },
       createdAt: {
         type: DataTypes.DATE,
         field: "created_at",

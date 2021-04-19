@@ -1,5 +1,4 @@
 const { moviesRepository } = require("../../repositories");
-const { fn, col } = require("sequelize");
 
 module.exports.getById = async (id) => {
   const query = {};
@@ -7,7 +6,6 @@ module.exports.getById = async (id) => {
 
   query.where = { id };
   query.include = [
-
     {
       association: 'actors',
       attributes: ['name'],
@@ -20,24 +18,19 @@ module.exports.getById = async (id) => {
     },
     {
       association: 'grades',
-      attributes: [
-        'grade',
-      ],
-      group: ['Movie.id'],
-      raw: true
-
-    }
+      attributes: ['grade'],
+    },
   ]
 
   const movie = await moviesRepository.get(query);
 
   const gradesSum = movie.grades.reduce((sum, grade) => sum + grade.grade, 0);
 
-  averegeGrade = gradesSum / movie.grades.length
+  const averegeGrade = (gradesSum / movie.grades.length).toFixed(1);
 
-  console.log(averegeGrade)
+  console.log(movie.grades)
 
-  const movieDetails = {
+  movieDetails = {
     title: movie.title,
     gender: movie.gender,
     synopsis: movie.synopsis,

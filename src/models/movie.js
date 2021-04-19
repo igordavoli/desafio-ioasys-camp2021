@@ -5,10 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       gender: DataTypes.STRING,
       synopsis: DataTypes.STRING,
-      userId: {
-        type: DataTypes.INTEGER,
-        field: "user_id",
-      },
       isDeleted: {
         type: DataTypes.BOOLEAN,
         field: "is_deleted",

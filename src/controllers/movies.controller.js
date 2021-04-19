@@ -70,6 +70,8 @@ module.exports = {
       const { movieId } = req.params;
       const { grade } = req.body;
 
+
+
       if (!(grade >= 0 && grade <= 4)) {
         throw {
           status: StatusCodes.UNPROCESSABLE_ENTITY,
