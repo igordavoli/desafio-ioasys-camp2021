@@ -1,6 +1,6 @@
 # camp-21
   Esse é o projeto feito por mim para colocar em prática os conhecimentos adquiridos na primeira fase do iosys Camp 2021.
-  foi fornecido este <a href="https://github.com/igordavoli/camp-21">boiler-plate</a> e estes <a href="https://github.com/igordavoli/desafio-ioasys-camp2021/blob/main/REQUISITOS.md">requisitos</a>.
+  Foi fornecido este <a href="https://github.com/igordavoli/camp-21">boiler-plate</a> e estes <a href="https://github.com/igordavoli/desafio-ioasys-camp2021/blob/main/REQUISITOS.md">requisitos</a>.
 
 
 
