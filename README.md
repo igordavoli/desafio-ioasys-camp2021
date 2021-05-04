@@ -1,6 +1,7 @@
 # camp-21
+  Esse é o projeto feito por mim para colocar em prática os conhecimentos adquiridos na primeira fase do iosys Camp 2021.
+  foi fornecido este <a href="https://github.com/igordavoli/camp-21">boiler-plate</a> e estes <a href="https://github.com/igordavoli/desafio-ioasys-camp2021/blob/main/REQUISITOS.md">requisitos</a>.
 
-<a href="https://documenter.getpostman.com/view/15333305/TzJshefi">Link da colection do postman</a> 
 
 
 Camp's folder structure
@@ -39,4 +40,5 @@ Camp's folder structure
 
 # Postman
 
-- Este é o link da collection que criei no postman com as rotas de login e listagem de usuários, para utiliza-la basta abrir o postman e importar via link e colocar o seguinte link `https://www.getpostman.com/collections/baa8ef10267688f8fa9e`.
+- Este é o link da collection que criei no postman com  todas as rotas de login,listagem de usuários, busca de filmes com filtros, cadastro de filmes e detalhes com a média das avaliações, para utiliza-la basta abrir o postman e importar via link e colocar o seguinte link:
+- https://documenter.getpostman.com/view/15333305/TzJshefi" 
