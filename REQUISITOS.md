@@ -1,73 +1,74 @@
 # Sobre
 
-Estes documento README tem como objetivo fornecer as informaÃ§Ãµes necessÃ¡rias para realizaÃ§Ã£o do projeto de avaliaÃ§Ã£o de candidatos.
+Estes documento README tem como objetivo fornecer as informações necessárias para realização do projeto de avaliação de candidatos.
 
-# ðŸ— O que fazer?
+# 🏗 O que fazer?
 
-- VocÃª deve realizar um fork deste repositÃ³rio e, ao finalizar, enviar o link do seu repositÃ³rio para a nossa equipe. Lembre-se, NÃƒO Ã© necessÃ¡rio criar um Pull Request para isso, nÃ³s iremos avaliar e retornar por email o resultado do seu teste.
+- Você deve realizar um fork deste repositório e, ao finalizar, enviar o link do seu repositório para a nossa equipe. Lembre-se, NÃO é necessário criar um Pull Request para isso, nós iremos avaliar e retornar por email o resultado do seu teste.
 
-# ðŸš¨ Requisitos
+# 🚨 Requisitos
 
-- A API deverÃ¡ ser construÃ­da em **NodeJS** ou **Rails**
-- Implementar autenticaÃ§Ã£o e deverÃ¡ seguir o padrÃ£o **JWT**, lembrando que o token a ser recebido deverÃ¡ ser no formato **Bearer**
-- Caso seja desenvolvida em NodeJS o seu projeto terÃ¡ que ser implementado em **ExpressJS** ou **SailsJS**
-- Para a comunicaÃ§Ã£o com o banco de dados utilize algum **ORM**/**ODM**
+- A API deverá ser construída em **NodeJS**
+- Implementar autenticação e deverá seguir o padrão **JWT**, lembrando que o token a ser recebido deverá ser no formato **Bearer**
+- Caso seja desenvolvida em NodeJS o seu projeto terá que ser implementado em **ExpressJS**
+- Para a comunicação com o banco de dados utilize algum **ORM**/**ODM**
 - Bancos relacionais permitidos:
   - MySQL
   - MariaDB
   - Postgre
-- Bancos nÃ£o relacionais permitidos:
+- Bancos não relacionais permitidos:
   - MongoDB
-- Sua API deverÃ¡ seguir os padrÃµes Rest na construÃ§Ã£o das rotas e retornos
-- Sua API deverÃ¡ conter a collection/variÃ¡veis do postman ou algum endpoint da documentaÃ§Ã£o em openapi para a realizaÃ§Ã£o do teste
-- Ã‰ desejÃ¡vel que o teste esteja na liguagem  **JavaScript** buscando avaliar o entendimento completo da linguagem e nÃ£o de estruturas ou dependÃªncias que abstraiam determinadas definiÃ§Ãµes nÃ£o alheias ao ECMAScript. No entanto, testes realizados em **TypeScript** tambÃ©m serÃ£o aceitos.
+- Sua API deverá seguir os padrões Rest na construção das rotas e retornos
+- Sua API deverá conter a collection/variáveis do postman ou algum endpoint da documentação em openapi para a realização do teste
+- É desejável que o teste esteja na liguagem  **JavaScript** buscando avaliar o entendimento completo da linguagem e não de estruturas ou dependências que abstraiam determinadas definições não alheias ao ECMAScript. No entanto, testes realizados em **TypeScript** também serão aceitos.
 
-# ðŸ•µðŸ»â€â™‚ï¸ Itens a serem avaliados
+# 🕵🏻‍♂️ Itens a serem avaliados
 
 - Estrutura do Projeto
-- SeguranÃ§a da API, como autenticaÃ§Ã£o, senhas salvas no banco, SQL Injection e outros
-- Boas prÃ¡ticas da Linguagem/Framework
-- Seu projeto deverÃ¡ seguir tudo o que foi exigido na seÃ§Ã£o [O que desenvolver?](##--o-que-desenvolver)
-- Migrations para a criaÃ§Ã£o das tabelas do banco relacional
+- Segurança da API, como autenticação, senhas salvas no banco, SQL Injection e outros
+- Boas práticas da Linguagem/Framework
+- Seu projeto deverá seguir tudo o que foi exigido na seção [O que desenvolver?](##--o-que-desenvolver)
+- Migrations para a criação das tabelas do banco relacional
 
-# ðŸŽ Extra
+# 🎁 Extra
 
-Esses itens nÃ£o sÃ£o obrigatÃ³rios, porÃ©m desejados.
+Esses itens não são obrigatórios, porém desejados.
 
-- Testes unitÃ¡rios
+- Testes unitários
 - Linter
 - Code Formater
 
-**Obs.: Lembrando que o uso de algum linter ou code formater irÃ¡ depender da linguagem que sua API for criada**
+**Obs.: Lembrando que o uso de algum linter ou code formater irá depender da linguagem que sua API for criada**
 
-# ðŸ–¥ O que desenvolver?
+# 🖥 O que desenvolver?
 
-VocÃª deverÃ¡ criar uma API que o site [IMDb](https://www.imdb.com/) irÃ¡ consultar para exibir seu conteÃºdo, sua API deve conter as seguintes features:
+Você deverá criar uma API que o site [IMDb](https://www.imdb.com/) irá consultar para exibir seu conteúdo, sua API deve conter as seguintes features:
 
 - Admin
 
   - Cadastro
-  - EdiÃ§Ã£o
-  - ExclusÃ£o lÃ³gica (DesativaÃ§Ã£o)
+  - Edição
+  - Exclusão lógica (Desativação)
 
-- UsuÃ¡rio
+- Usuário
 
   - Cadastro
-  - EdiÃ§Ã£o
-  - ExclusÃ£o lÃ³gica (DesativaÃ§Ã£o)
+  - Edição
+  - Exclusão lógica (Desativação)
 
 - Filmes
 
-  - Cadastro (Somente um usuÃ¡rio administrador poderÃ¡ realizar esse cadastro)
-  - Voto (A contagem dos votos serÃ¡ feita por usuÃ¡rio de 0-4 que indica quanto o usuÃ¡rio gostou do filme)
-  - Listagem (deverÃ¡ ter filtro por diretor, nome, gÃªnero e/ou atores)
-  - Detalhe do filme trazendo todas as informaÃ§Ãµes sobre o filme, inclusive a mÃ©dia dos votos
+  - Cadastro (Somente um usuário administrador poderá realizar esse cadastro)
+  - Voto (A contagem dos votos será feita por usuário de 0-4 que indica quanto o usuário gostou do filme)
+  - Listagem (deverá ter filtro por diretor, nome, gênero e/ou atores)
+  - Detalhe do filme trazendo todas as informações sobre o filme, inclusive a média dos votos
 
-**Obs.: Apenas os usuÃ¡rios poderÃ£o votar nos filmes e a API deverÃ¡ validar quem Ã© o usuÃ¡rio que estÃ¡ acessando, ou seja, se Ã© admin ou nÃ£o**
+**Obs.: Apenas os usuários poderão votar nos filmes e a API deverá validar quem é o usuário que está acessando, ou seja, se é admin ou não**
 
-# ðŸ”— Links
+# 🔗 Links
 
-- DocumentaÃ§Ã£o JWT https://jwt.io/
+- Documentação JWT https://jwt.io/
 - Frameworks NodeJS:
+  https://expressjs.com/pt-br/
 
-  1. https://expressjs.com/pt-br/
+
